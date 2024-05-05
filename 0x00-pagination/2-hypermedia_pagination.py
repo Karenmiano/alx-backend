@@ -21,7 +21,7 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
 class Server:
     """Server class to paginate a database of popular baby names.
     """
-    DATA_FILE = "baby.csv"
+    DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
         """
@@ -51,7 +51,6 @@ class Server:
 
         page_data = self.dataset()
         indexes = index_range(page, page_size)
-        print(indexes)
         page_data = page_data[indexes[0]: indexes[1]]
 
         return page_data

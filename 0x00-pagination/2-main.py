@@ -7,10 +7,10 @@ Server = __import__('2-hypermedia_pagination').Server
 
 server = Server()
 
-print(server.get_hyper(0, 2))
+print(server.get_hyper(1, 2))
 print("---")
 print(server.get_hyper(2, 2))
 print("---")
-print(server.get_hyper(2158, 9))
+print(server.get_hyper(100, 3))
 print("---")
-print(server.get_hyper(1, 100))
+print(server.get_hyper(3000, 100))
