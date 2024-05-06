@@ -41,16 +41,26 @@ class Server:
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
         """
-        Return data of length page_size starting at index
+        Return data of length page_size starting from index
         """
         dataset = self.indexed_dataset()
         len_dataset = len(dataset)
+        start = None
+        if index in dataset:
+            start = index
+        else:
+            for i in range(index + 1, len_dataset):
+                if i in dataset:
+                    start = i
+                    break
 
-        if index >= len_dataset:
+        if start is None:
             raise AssertionError
-
-        start, end = index, index + page_size
-        data = [dataset[i] for i in range(start, end) if i in dataset]
+        start, end = start, start + page_size
+        data = []
+        for i in range(start, end):
+            if dataset.get(i):
+                data.append(dataset[i])
 
         return {
             'index': index,
