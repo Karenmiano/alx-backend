@@ -50,8 +50,8 @@ class Server:
         assert page_size > 0
 
         page_data = self.dataset()
-        indexes = index_range(page, page_size)
-        page_data = page_data[indexes[0]: indexes[1]]
+        start, end = index_range(page, page_size)
+        page_data = page_data[start: end]
 
         return page_data
 
