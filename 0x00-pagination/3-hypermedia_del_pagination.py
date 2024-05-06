@@ -58,4 +58,3 @@ class Server:
             'next_index': end,
             'page_size': len(data),
         }
-
