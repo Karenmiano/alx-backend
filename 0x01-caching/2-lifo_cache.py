@@ -29,6 +29,7 @@ class LIFOCache(BaseCaching):
             if cache_len >= max_items and key not in self.cache_data:
                 discard = self.order[-1]
                 del self.cache_data[discard]
+                del self.order[-1]
                 print('DISCARD: {}'.format(discard))
             self.order.append(key)
             self.cache_data[key] = item
