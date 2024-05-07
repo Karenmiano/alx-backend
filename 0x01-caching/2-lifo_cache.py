@@ -11,12 +11,14 @@ class LIFOCache(BaseCaching):
         put method implements FIFO cache replacement when items
         in cache_data exceed MAX_ITEMS.
     """
+
     def __init__(self):
         """
         Initializes the cache with an ordered dict.
         """
         super().__init__()
         self.order = []
+
     def put(self, key, item):
         """
         Adds an item to cache
