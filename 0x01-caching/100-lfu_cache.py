@@ -15,6 +15,7 @@ class LFUCache(BaseCaching):
         keep track of the usage of items.
         """
         super().__init__()
+        # list of tuples with order and frequency of usage
         self.order = []
 
     def put(self, key, item):
@@ -55,6 +56,10 @@ class LFUCache(BaseCaching):
         self.order.append((key, times))
 
     def to_discard(self):
+        """
+        Determines which item to discard based on least frequently
+        used and then least recently used
+        """
         i = 0
         discard = self.order[i]
         for tup in self.order:
