@@ -32,7 +32,7 @@ class LIFOCache(BaseCaching):
                 del self.cache_data[discard]
                 del self.order[-1]
                 print('DISCARD: {}'.format(discard))
-            self.order.append(key)
+            self.handle_key(key)
             self.cache_data[key] = item
 
     def get(self, key):
@@ -40,3 +40,11 @@ class LIFOCache(BaseCaching):
         Gets an item from cache
         """
         return self.cache_data.get(key)
+
+    def handle_key(self, key):
+        """
+        Places recently used keys to the end of the order list.
+        """
+        if key in self.order:
+            self.order.remove(key)
+        self.order.append(key)
