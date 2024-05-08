@@ -14,7 +14,8 @@ class LIFOCache(BaseCaching):
 
     def __init__(self):
         """
-        Initializes the cache with an ordered dict.
+        Initializes the cache with a dict and order list to
+        keep track of order of insertion.
         """
         super().__init__()
         self.order = []
