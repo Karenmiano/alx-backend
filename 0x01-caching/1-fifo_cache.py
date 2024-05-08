@@ -30,7 +30,7 @@ class FIFOCache(BaseCaching):
                 del self.cache_data[discard]
                 print('DISCARD: {}'.format(discard))
                 del self.order[0]
-            self.order.append(key)
+            self.handle_key(key)
             self.cache_data[key] = item
 
     def get(self, key):
@@ -38,3 +38,11 @@ class FIFOCache(BaseCaching):
         Gets an item from cache
         """
         return self.cache_data.get(key)
+
+    def handle_key(self, key):
+        """
+        Places recently added and used keys to the end of the order list.
+        """
+        if key in self.order:
+            self.order.remove(key)
+        self.order.append(key)
