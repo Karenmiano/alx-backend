@@ -5,6 +5,7 @@ Defines a flask app.
 from flask_babel import Babel
 from flask import Flask, render_template
 
+
 class Config:
     """
     Holds configuration values for the Flask app.
@@ -13,9 +14,11 @@ class Config:
     BABEL_DEFAULT_LOCALE = "en"
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
+
 app = Flask(__name__)
 app.config.from_object(Config)
 babel = Babel(app)
+
 
 @app.route('/', strict_slashes=False)
 def index() -> str:
