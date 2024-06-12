@@ -57,10 +57,10 @@ for (const j of jobs) {
 
   job
     .on("complete", (result) => {
-      console.log("Notification job completed");
+      console.log(`Notification job ${job.id} completed`);
     })
     .on("failed", (errorMessage) => {
-      console.log("Notification job failed");
+      console.log(`Notification job ${job.id} failed: ${errorMessage}`);
     })
     .on("progress", (progress, data) => {
       console.log(`Notification job ${job.id} ${progress}% complete`);
