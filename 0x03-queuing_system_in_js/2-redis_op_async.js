@@ -1,6 +1,8 @@
 import redis from "redis";
+import util from "util";
 
 const client = redis.createClient();
+const redisGet = util.promisify(client.get);
 
 client
   .on("error", (err) => {
@@ -14,8 +16,8 @@ function setNewSchool(schoolName, value) {
   client.set(schoolName, value, redis.print);
 }
 
-function displaySchoolValue(schoolName) {
-  client.get(schoolName, (err, value) => {
+async function displaySchoolValue(schoolName) {
+  await redisGet(schoolName, (err, value) => {
     if (err) throw err;
     console.log(value);
   });
