@@ -17,5 +17,8 @@ client.hset("HolbertonSchools", "Cali", "40", redis.print);
 client.hset("HolbertonSchools", "Paris", "2", redis.print);
 
 client.hgetall("HolbertonSchools", (err, obj) => {
+  if (err) {
+    console.log(err);
+  }
   console.log(obj);
 });

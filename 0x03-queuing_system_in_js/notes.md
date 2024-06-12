@@ -23,3 +23,5 @@ purpose of queues:
 3. Avoiding single point of failure.
 
 \*\* NODE_REDIS
+
+\*\* Redis Pub/Sub
